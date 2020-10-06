@@ -63,9 +63,25 @@ describe("HTTP POST", () => {
         const result = await api
             .post("/api/blogs")
             .send(initialBlogs[2])
+
         expect(result.body.title).toEqual(initialBlogs[2].title)
 
         const response = await api.get("/api/blogs")
         expect(response.body).toHaveLength(3)
+    })
+
+    test("likes of new blog should default to 0", async () => {
+        const blogWithoutLike = {
+            title: faker.name.firstName(),
+            author: faker.random.word(),
+            url: faker.internet.url(),
+        }
+
+        const result = await api
+            .post("/api/blogs")
+            .send(blogWithoutLike)
+        
+        expect(result.body.likes).toEqual(0)
+
     })
 })
