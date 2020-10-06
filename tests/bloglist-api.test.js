@@ -27,6 +27,7 @@ const initialBlogs = [
         likes: faker.random.number()
     }
 ]
+
 // test setup
 beforeEach(async () => {
     await Blog.deleteMany({})
@@ -37,6 +38,7 @@ beforeEach(async () => {
     blogObject = new Blog(initialBlogs[1])
     await blogObject.save()
 })
+
 afterAll(() => {
     mongoose.connection.close()
 })
