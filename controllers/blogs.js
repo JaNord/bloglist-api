@@ -10,9 +10,9 @@ blogsRouter.get("/", async (request, response) => {
 blogsRouter.post("/", async (request, response) => {
     const data = request.body
 
-    if (!data) {
+    if (!data.title || !data.url) {
         const errorResponse = {
-            error: "Request body cannot be empty"
+            error: "Properies title or url cannot be undefined"
         }
 
         return response.status(400).json(errorResponse)

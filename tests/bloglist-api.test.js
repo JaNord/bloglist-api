@@ -71,7 +71,7 @@ describe("HTTP POST", () => {
     })
 
     test("likes of new blog should default to 0", async () => {
-        const blogWithoutLike = {
+        const faultyBlog = {
             title: faker.name.firstName(),
             author: faker.random.word(),
             url: faker.internet.url(),
@@ -79,9 +79,30 @@ describe("HTTP POST", () => {
 
         const result = await api
             .post("/api/blogs")
-            .send(blogWithoutLike)
+            .send(faultyBlog)
         
         expect(result.body.likes).toEqual(0)
+    })
 
+    test("with empty title or url should result in 400 Bad Request response", async () => {
+        let faultyBlog = {
+            title: faker.random.word(),
+            author: faker.name.firstName()
+        }
+
+        await api
+            .post("/api/blogs")
+            .send(faultyBlog)
+            .expect(400)
+        
+        faultyBlog = {
+            url: faker.internet.url(),
+            author: faker.name.firstName()
+        }
+
+        await api
+            .post("/api/blogs")
+            .send(faultyBlog)
+            .expect(400)
     })
 })
