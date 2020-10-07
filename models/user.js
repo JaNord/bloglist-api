@@ -5,11 +5,17 @@ const userSchema = mongoose.Schema({
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        validate: {
+            validator: (username) => {
+                return username.length >= 3
+            }
+        }
     },
     name: String,
     passwordHash: String
 })
+
 userSchema.plugin(uniqueValidator)
 
 userSchema.set("toJSON", {

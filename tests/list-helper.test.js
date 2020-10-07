@@ -1,4 +1,4 @@
-const listHelper = require("../utils/list_helper")
+const listHelper = require("../utils/list-helper")
 
 const blog1 =  {
     title: "blog1",
