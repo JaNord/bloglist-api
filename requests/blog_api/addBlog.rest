@@ -3,8 +3,8 @@ Content-Type: application/json
 Authorization: Bearer <token>
 
 {
-    "title" : <titel>,
+    "title" : <title>,
     "author" : <author>,
     "url" : <url>,
-    "likes" : <likes> 
+    "likes" : 0 
 }
