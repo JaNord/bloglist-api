@@ -1,10 +1,10 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: asdsadas 
+Authorization: Bearer <token>
 
 {
-    "title" : "authorized blog",
-    "author" : "Ja Nord",
-    "url" : "jn.com",
-    "likes" : 10 
+    "title" : <titel>,
+    "author" : <author>,
+    "url" : <url>,
+    "likes" : <likes> 
 }
