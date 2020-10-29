@@ -37,7 +37,7 @@ blogsRouter.post("/", async (request, response) => {
         body.likes = 0
     }
 
-    body.user = user._id
+    body.user = user
     const blog = new Blog(body)
 
     const result = await blog.save()
